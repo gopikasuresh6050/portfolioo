@@ -354,9 +354,16 @@ footer {
     background: transparent; /* Ensures it starts black */
 }
 
-.resume-btn:hover {
-    background-color: var(--text-primary);
-    color: var(--bg-color);
-    transform: translateY(-5px); /* Lift effect */
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* This centers it horizontally */
+    margin-top: 30px;
+}
+
+header#about {
+    text-align: center; /* This centers the H1 and P tags */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

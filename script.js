@@ -54,3 +54,34 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 });
+/* script.js */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Typewriter Effect
+    const nameText = "GOPIKA";
+    const logo = document.getElementById("type-logo");
+    let i = 0;
+
+    if (logo) {
+        function type() {
+            if (i < nameText.length) {
+                logo.innerHTML = nameText.substring(0, i + 1) + '<span>.</span>';
+                i++;
+                setTimeout(type, 150);
+            }
+        }
+        type();
+    }
+
+    // 2. Scroll Reveal Logic
+    const revealElements = document.querySelectorAll('section');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+});

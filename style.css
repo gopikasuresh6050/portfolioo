@@ -322,10 +322,41 @@ footer {
     transition: all 0.4s ease;
     cursor: pointer;
 }
+/* Center the hero content wrapper */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    justify-content: center;
+    text-align: center; /* Centers the text inside tags */
+}
+
+/* Container for the button to add specific spacing */
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Your existing button style with a small fix */
+.resume-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    background: transparent; /* Ensures it starts black */
+}
 
 .resume-btn:hover {
     background-color: var(--text-primary);
-    color: var(--bg-color); /* Flips colors on hover */
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    color: var(--bg-color);
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }

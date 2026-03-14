@@ -15,23 +15,42 @@ toolCards.forEach(card => {
     card.style.transition = "all 0.6s ease-out";
     fadeUpOnScroll.observe(card);
 });
-.resume-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 30px;
-    border: 1px solid var(--text-primary);
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    transition: all 0.4s ease;
-    cursor: pointer;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- TYPEWRITER EFFECT ---
+    const nameText = "GOPIKA";
+    const logoElement = document.getElementById("type-logo");
+    let i = 0;
 
-.resume-btn:hover {
-    background-color: var(--text-primary);
-    color: var(--bg-color); /* Flips colors on hover */
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-}
+    function typeWriter() {
+        if (logoElement && i < nameText.length) {
+            // substring(0, i + 1) creates the "typing" look
+            logoElement.innerHTML = nameText.substring(0, i + 1) + '<span>.</span>';
+            i++;
+            setTimeout(typeWriter, 150); // Speed in milliseconds
+        }
+    }
+
+    typeWriter();
+
+    // --- REVEAL ON SCROLL ---
+    // This makes sections slide up and fade in as you scroll
+    const observerOptions = {
+        threshold: 0.15 // Section must be 15% visible to trigger
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptions);
+
+    // Apply to all major sections
+    const targetSections = document.querySelectorAll('section, header, .tech-card');
+    targetSections.forEach(section => {
+        section.classList.add('reveal-on-scroll');
+        observer.observe(section);
+    });
+});

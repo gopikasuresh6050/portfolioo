@@ -54,34 +54,43 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 });
-/* script.js */
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Typewriter Effect
-    const nameText = "GOPIKA";
-    const logo = document.getElementById("type-logo");
-    let i = 0;
+    const tabs = document.querySelectorAll('.about-tab-btn');
+    const panes = document.querySelectorAll('.about-pane');
 
-    if (logo) {
-        function type() {
-            if (i < nameText.length) {
-                logo.innerHTML = nameText.substring(0, i + 1) + '<span>.</span>';
-                i++;
-                setTimeout(type, 150);
-            }
-        }
-        type();
-    }
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetId = tab.getAttribute('data-target');
 
-    // 2. Scroll Reveal Logic
-    const revealElements = document.querySelectorAll('section');
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
+            // 1. Deactivate all buttons and panes
+            tabs.forEach(btn => btn.classList.remove('active'));
+            panes.forEach(pane => pane.classList.remove('active'));
+
+            // 2. Activate the clicked button
+            tab.classList.add('active');
+
+            // 3. Show the corresponding content with a slight delay for smoothness
+            const activePane = document.getElementById(targetId);
+            activePane.classList.add('active');
         });
-    }, { threshold: 0.1 });
-
-    revealElements.forEach(el => revealObserver.observe(el));
+    });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('header, section, footer');
+
+    // 1. Smooth Scrolling Interaction
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            window.scrollTo({
+                top: targetSection.offsetTop - 70, // Adjust for nav height
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    s

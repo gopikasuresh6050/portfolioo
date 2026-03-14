@@ -322,7 +322,7 @@ footer {
     transition: all 0.4s ease;
     cursor: pointer;
 }
-/* Center the hero content wrapper */
+/*  the hero content wrapper */
 .hero-content {
     display: flex;
     flex-direction: column;
